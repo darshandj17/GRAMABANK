@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b6b4b">
+<meta name="description" content="GramBank AI — voice-first multilingual financial literacy assistant">
+<title>GramBank AI — Financial Literacy</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="logo">G</div><div><b>GramBank AI</b><small>Financial Literacy</small></div></div>
+  <nav>
+    <button class="nav active" data-page="home">⌂ <span>Home</span></button>
+    <button class="nav" data-page="assistant">✦ <span>AI Assistant</span></button>
+    <button class="nav" data-page="policy">▣ <span>Policy Simplifier</span></button>
+    <button class="nav" data-page="voice">◉ <span>Voice Assistant</span></button>
+    <button class="nav" data-page="fraud">⚠ <span>Fraud Shield</span></button>
+    <button class="nav" data-page="schemes">₹ <span>Scheme Finder</span></button>
+    <button class="nav" data-page="learn">✓ <span>Learn</span></button>
+    <button class="nav" data-page="profile">⚙ <span>Profile & AI</span></button>
+    <button class="nav" data-page="admin">▤ <span>Admin Console</span></button>
+  </nav>
+  <div class="safety"><b>🔒 Safety first</b><br><span>Never share OTP, PIN, CVV, password or full banking credentials.</span></div>
+</aside>
+
+<main>
+<header>
+  <button id="menu" class="iconbtn">☰</button>
+  <div class="crumb" id="crumb">Home</div>
+  <div class="header-status"><span class="dot"></span><span id="aiStatus">Demo AI ready</span></div>
+  <select id="lang" aria-label="Language">
+    <option>English</option><option>ಕನ್ನಡ</option><option>हिन्दी</option><option>தமிழ்</option><option>తెలుగు</option><option>অসমীয়া</option><option>বাংলা</option>
+  </select>
+</header>
+
+<section id="home" class="page active">
+  <div class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">VOICE-FIRST • MULTILINGUAL • SAFE</span>
+      <h1>Banking made<br><em>simple for everyone.</em></h1>
+      <p>Ask questions in English, local languages, or Romanized text. Learn, verify, and stay safer from scams.</p>
+      <div class="hero-actions"><button class="primary" onclick="showPage('assistant')">Ask GramBank AI →</button><button class="ghost" onclick="showPage('fraud')">Check a message</button></div>
+      <div class="trustline"><span>✓ No sign-in</span><span>✓ No OTP/PIN</span><span>✓ Demo mode works offline</span></div>
+    </div>
+    <div class="visual visual-home">
+      <div class="orbit o1"></div><div class="orbit o2"></div><div class="phone"><div class="phone-top"></div><div class="phone-screen"><span class="mini-logo">G</span><b>Namaste!</b><small>How can I help?</small><div class="mini-chat"></div><div class="mini-chat short"></div></div></div>
+      <div class="float-card fc1">🔊 Voice</div><div class="float-card fc2">🛡 Safe</div>
+    </div>
+  </div>
+  <div class="section-title"><div><h2>What do you need help with?</h2><p>Each tool is designed for a real-world banking situation.</p></div><span class="badge">9 tools</span></div>
+  <div class="cards">
+    <article class="feature-card green" onclick="showPage('assistant')"><div class="card-art art-chat">✦</div><b>AI Assistant</b><p>Ask banking and financial-literacy questions in simple language.</p><span>Open assistant →</span></article>
+    <article class="feature-card blue" onclick="showPage('policy')"><div class="card-art art-policy">▤</div><b>Policy Simplifier</b><p>Turn complicated notices and policies into clear steps.</p><span>Simplify a policy →</span></article>
+    <article class="feature-card orange" onclick="showPage('fraud')"><div class="card-art art-fraud">🛡</div><b>Fraud Shield</b><p>Analyze suspicious SMS, WhatsApp messages and payment requests.</p><span>Check message →</span></article>
+    <article class="feature-card purple" onclick="showPage('schemes')"><div class="card-art art-scheme">₹</div><b>Scheme Finder</b><p>Explore government-scheme matches with official-source reminders.</p><span>Find schemes →</span></article>
+    <article class="feature-card teal" onclick="showPage('voice')"><div class="card-art art-voice">◉</div><b>Voice Assistant</b><p>Speak your question and listen to the answer.</p><span>Start speaking →</span></article>
+    <article class="feature-card yellow" onclick="showPage('learn')"><div class="card-art art-learn">✓</div><b>Financial Learning</b><p>Practice with short quizzes and instant explanations.</p><span>Start quiz →</span></article>
+  </div>
+  <div class="notice"><b>ⓘ Trusted-answer principle</b><span>Policy and scheme information should be verified on official government or bank sources before taking action.</span></div>
+</section>
+
+<section id="assistant" class="page">
+  <div class="pagehead"><div class="section-visual sv-chat">✦</div><div><span class="eyebrow">ASK • UNDERSTAND • VERIFY</span><h1>AI Assistant</h1><p>English, Kannada, Hindi, Romanized and code-mixed questions are welcome.</p></div></div>
+  <div class="quickchips"><button onclick="usePrompt('How can I open a bank account?')">Open bank account</button><button onclick="usePrompt('What is UPI and how can I use it safely?')">UPI safety</button><button onclick="usePrompt('What is an ATM and how does it work?')">ATM basics</button><button onclick="usePrompt('nanage bank account open madbeku hege?')">Kannada / Romanized</button></div>
+  <div class="chat" id="assistantChat"><div class="bot"><b>GramBank AI</b><p>Namaste! I can explain banking in simple words. Ask me anything about financial literacy. I will never ask for OTP, PIN, CVV or password.</p><small class="source-tag">Demo knowledge • Gemini-ready</small></div></div>
+  <div class="composer"><textarea id="assistantInput" rows="2" placeholder="Type your question… e.g. bank account open madodu hege?"></textarea><button class="mic" onclick="voiceTo('assistantInput')" title="Speak">🎙</button><button class="primary" onclick="askAI()">Ask AI</button></div>
+  <div class="tiny-note">AI mode: <b id="assistantMode">Demo fallback</b> · Configure Gemini in Profile for live answers.</div>
+</section>
+
+<section id="policy" class="page">
+  <div class="pagehead"><div class="section-visual sv-policy">▣</div><div><span class="eyebrow">READ • SIMPLIFY • VERIFY</span><h1>Policy Simplifier</h1><p>Paste a banking notice, policy, fee schedule or instruction.</p></div></div>
+  <div class="workspace two-col">
+    <div class="panel"><label>Policy / notice</label><textarea id="policyInput" class="biginput" placeholder="Paste the policy text here…"></textarea><div class="row"><button class="primary" onclick="simplifyPolicy()">✨ Simplify with AI</button><button class="ghost" onclick="fillPolicy()">Use demo policy</button><button class="ghost" onclick="voiceTo('policyInput')">🎙</button></div></div>
+    <div class="panel result-panel"><div class="result-head"><b>Simple explanation</b><span class="badge">AI</span></div><div id="policyResult" class="result empty">Your simplified explanation will appear here.</div><div class="official-box">🔎 <b>Verify before acting</b><br>Use the bank's official website/branch notice for final confirmation.</div></div>
+  </div>
+</section>
+
+<section id="voice" class="page">
+  <div class="pagehead"><div class="section-visual sv-voice">◉</div><div><span class="eyebrow">SPEAK • LISTEN • REPLAY</span><h1>Voice Assistant</h1><p>Tap the microphone to request Android microphone permission, then speak. The app answers in your selected language.</p></div></div>
+  <div class="voicebox">
+    <div class="voice-orb" id="voiceOrb"><span>🎙</span></div>
+    <h2 id="voiceState">Ready to listen</h2><p id="voiceTranscript">Tap the microphone and speak a banking question.</p>
+    <div class="voice-actions"><button class="primary" onclick="startListening()">🎙 Allow microphone & speak</button><button class="ghost" onclick="speak(document.getElementById('voiceTranscript').innerText)">🔊 Replay</button><button class="ghost" onclick="stopSpeaking()">⏹ Stop</button></div>
+    <div class="voice-answer" id="voiceAnswer">Your AI answer will appear here.</div>
+  </div>
+</section>
+
+<section id="fraud" class="page">
+  <div class="pagehead"><div class="section-visual sv-fraud">🛡</div><div><span class="eyebrow">DETECT • EXPLAIN • PROTECT</span><h1>Fraud Shield</h1><p>Paste a suspicious message and get a clear risk assessment.</p></div></div>
+  <div class="workspace two-col">
+    <div class="panel"><label>Suspicious message</label><textarea id="fraudInput" class="biginput" placeholder="Example: Your account will be blocked. Click this link and share OTP…"></textarea><div class="row"><button class="primary" onclick="checkFraud()">🛡 Check risk</button><button class="ghost" onclick="fillFraud()">Use demo scam</button></div><div class="safety-strip">🚫 Never share OTP, PIN, CVV, password or remote-access codes.</div></div>
+    <div class="panel result-panel"><div class="result-head"><b>Safety report</b><span id="riskBadge" class="risk neutral">WAITING</span></div><div id="fraudResult" class="result empty">Paste a message to analyze it.</div></div>
+  </div>
+</section>
+
+<section id="schemes" class="page">
+  <div class="pagehead"><div class="section-visual sv-scheme">₹</div><div><span class="eyebrow">DISCOVER • MATCH • VERIFY</span><h1>Scheme Finder</h1><p>Get educational matches based on your profile. Always verify eligibility officially.</p></div></div>
+  <div class="panel formgrid">
+    <label>Occupation<select id="occupation"><option>Farmer</option><option>Student</option><option>Small business owner</option><option>Job holder</option><option>Woman entrepreneur</option><option>Senior citizen</option></select></label>
+    <label>Purpose<select id="purpose"><option>Income support</option><option>Education</option><option>Business / credit</option><option>Insurance / pension</option><option>Housing</option></select></label>
+    <label>State<select id="state"><option>Karnataka</option><option>Assam</option><option>Other Indian state</option></select></label>
+    <label>Age group<select id="age"><option>18–25</option><option>26–40</option><option>41–59</option><option>60+</option></select></label>
+    <div class="form-actions"><button class="primary" onclick="findSchemes()">🔎 Find matches</button><button class="ghost" onclick="findSchemes(true)">Use demo results</button></div>
+  </div>
+  <div id="schemeResult" class="scheme-grid"></div>
+</section>
+
+<section id="learn" class="page">
+  <div class="pagehead"><div class="section-visual sv-learn">✓</div><div><span class="eyebrow">LEARN • PRACTICE • IMPROVE</span><h1>Financial Learning</h1><p>Short questions designed for everyday banking decisions.</p></div></div>
+  <div class="quiz-top"><div><span class="badge">QUIZ</span><h2 id="quizQuestion">Loading question…</h2></div><div class="score"><b id="score">0</b><small>score</small></div></div>
+  <div id="quizOptions" class="quiz-options"></div><div id="quizFeedback" class="quiz-feedback"></div><button id="nextQuiz" class="primary" onclick="nextQuiz()" style="display:none">Next question →</button>
+</section>
+
+<section id="profile" class="page">
+  <div class="pagehead"><div class="section-visual sv-profile">⚙</div><div><span class="eyebrow">PERSONALIZE • CONNECT • CONTROL</span><h1>Profile & AI Setup</h1><p>No account is required. Settings stay in this browser.</p></div></div>
+  <div class="workspace two-col">
+    <div class="panel settings">
+      <h2>Gemini AI</h2>
+      <p class="muted">Use a Google AI Studio Gemini API key. The app also has a demo fallback, so the prototype can answer common questions without a key.</p>
+      <label>Gemini API key<input id="apiKey" type="password" placeholder="Paste Gemini API key"></label>
+      <label>Gemini model<input id="model" value="gemini-2.0-flash" placeholder="gemini-2.0-flash"></label>
+      <div class="row"><button class="primary" onclick="saveSettings()">🔗 Save & test Gemini</button><button class="ghost" onclick="loadGeminiModels()">Find available model</button><button class="ghost" onclick="clearSettings()">Clear key</button></div>
+      <div id="testResult" class="test-result">Status: demo mode.</div>
+    </div>
+    <div class="panel">
+      <h2>Accessibility</h2>
+      <label class="switchrow"><span>Large text</span><input type="checkbox" id="largeText" onchange="toggleLargeText()"></label>
+      <label class="switchrow"><span>High contrast</span><input type="checkbox" id="highContrast" onchange="toggleContrast()"></label>
+      <label class="switchrow"><span>Auto-read AI answers</span><input type="checkbox" id="autoRead"></label>
+      <hr><h2>Language</h2><p class="muted">Selected language: <b id="selectedLanguage">English</b>. Gemini is instructed to respond in the selected language when possible.</p>
+    </div>
+  </div>
+</section>
+
+<section id="admin" class="page">
+  <div class="pagehead"><div class="section-visual sv-admin">▤</div><div><span class="eyebrow">CONTROL • VERIFY • AUDIT</span><h1>Admin Console</h1><p>Hackathon-ready local admin dashboard for verified content and audit activity.</p></div></div>
+  <div class="admin-stats"><div><b id="auditCount">0</b><span>Audit events</span></div><div><b id="contentCount">0</b><span>Verified items</span></div><div><b id="quizCount">6</b><span>Quiz questions</span></div><div><b>100%</b><span>Local prototype</span></div></div>
+  <div class="workspace two-col">
+    <div class="panel"><div class="result-head"><h2>Verified content registry</h2><button class="primary small" onclick="addVerifiedContent()">+ Add item</button></div><div id="contentList" class="content-list"></div></div>
+    <div class="panel"><div class="result-head"><h2>Audit log</h2><button class="ghost small" onclick="clearAudit()">Clear</button></div><div id="auditList" class="audit-list"></div></div>
+  </div>
+  <div class="admin-note">⚠ This is a client-side hackathon prototype. A production admin console must use authentication, server-side storage, permissions, and an auditable backend.</div>
+</section>
+</main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
