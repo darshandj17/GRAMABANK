@@ -36,4 +36,5 @@ Add your Gemini API key from the Profile/Admin section and use **Save & Test Gem
 
 ## Project Purpose
 
-Built as a hackathon prototype to improve financial literacy, banking awareness, and fraud prevention for underserved users.
+Built as a 
+prototype to improve financial literacy, banking awareness, and fraud prevention for underserved users.
